@@ -13,6 +13,6 @@ fi
 mkdir bin;
 
 # Compilation de src dans bin en utilisant les librairies
-javac -cp lib/jMusic1.6.5.jar:lib/inst/ -d bin/ src/*/*.java;
+javac -Xlint -cp lib/jMusic1.6.5.jar:lib/inst/ -d bin/ src/*/*.java;
 
 echo "Compilation fini";

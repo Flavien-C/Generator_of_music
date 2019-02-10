@@ -1,0 +1,63 @@
+######################
+##  base de jmusic  ##
+######################
+
+Notes
+    - pitch : hauteur de la note. [0..127]
+    - rhythmValue : longueur de la note. > 0
+    - dynamic: la sonie (volume/bruit parasite de la note ?). [0..127]
+    - pan: canal de sortie stereo. [0..1]
+    
+
+Phrase
+    C'est un vecteur de note. Par exemple un morceau de piano aura 2 phrases: la main droite et la main gauche
+    
+
+Part
+    Contient un vecteur de Phrase qui seront interprete par un instrument
+    - instrument: id de l'instrument a utiliser (explodingart.com/jmusic/jmtutorial/JMC_Instruments.html)
+
+
+Score  
+    Contient un vecteur de Part
+
+
+Sauvegarder sur le DD la creation
+    Write.midi(score, "name.mid");
+
+
+######################
+## chaine de markov ##
+######################
+
+construire un tableau a deux entrees avec les notes
+un champs = nombre de fois que note_line suit note_column
+Ensuite on fait la somme sur une ligne pour convertir en %
+
+example:
+soit la phrase: {a, b, b, c, a}
+     _______________________
+    |   a   |   b   |   c   |
+ ___|_______|_______|_______|
+| a |   0   |   1   |   0   |   => 1
+|___|_______|_______|_______|
+| b |   0   |   1   |   1   |   => 2
+|___|_______|_______|_______|
+| c |   1   |   0   |   0   |   => 1
+|___|_______|_______|_______|
+
+     _______________________
+    |   a   |   b   |   c   |
+ ___|_______|_______|_______|
+| a |  0/1  |  1/1  |  0/1  | 
+|___|_______|_______|_______|
+| b |  0/2  |  1/2  |  1/2  |
+|___|_______|_______|_______|
+| c |  1/1  |  0/1  |  0/1  |
+|___|_______|_______|_______|
+
+Ainsi
+apres un a, il y a 100% de chance qu'un b suive.
+apres un b, il y a 50% de chance qu'un b suive ou 50% de chance qu'un c suive.
+apres un c, il y a 100% de chance qu'un a suive.
+
