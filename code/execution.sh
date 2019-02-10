@@ -3,9 +3,8 @@
 
 echo "Debut d'execution";
 
-cd code/;
 
 # execution d'une classe dans bin
-java -cp bin/:lib/jMusic1.6.5.jar/:lib/inst/ Scale;
+java -cp bin/:lib/jMusic1.6.5.jar/:lib/inst/ model.State;
 
 echo "Fin d'exectution";

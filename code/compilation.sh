@@ -3,7 +3,6 @@
 
 echo "Debut de compilation";
 
-cd code/;
 
 # Suppression de bin si il existe
 if [ -d "$bin/" ]; then
@@ -14,6 +13,6 @@ fi
 mkdir bin;
 
 # Compilation de src dans bin en utilisant les librairies
-javac -cp lib/jMusic1.6.5.jar:lib/inst/ -d bin/ src/*.java;
+javac -cp lib/jMusic1.6.5.jar:lib/inst/ -d bin/ src/*/*.java;
 
 echo "Compilation fini";
