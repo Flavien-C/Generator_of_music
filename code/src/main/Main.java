@@ -1,7 +1,6 @@
 package main;
 
 import model.*;
-import vc.*;
 
 import jm.JMC;
 import jm.music.data.*;
@@ -20,7 +19,7 @@ public class Main {
         
         State state = new State(score);
         
-        //System.out.println(state);
+        System.out.println(state.getNotesOf(0));
         //state.save("test");
         
     }

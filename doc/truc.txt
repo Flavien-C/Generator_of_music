@@ -26,6 +26,32 @@ Sauvegarder sur le DD la creation
     Write.midi(score, "name.mid");
 
 
+
+Etat
+    |-+ Score
+        |-+ Part 1
+            |-+ Phrase 1_1
+                |-+ Note 1_1_1
+                |-+ Note 1_1_2
+                |-+ Note 1_1_3
+            |-+ Phrase 1_2
+                |-+ Note 1_2_1
+                |-+ Note 1_2_2
+                |-+ Note 1_2_3
+        |-+ Part 2
+            |-+ Phrase 2_1
+                |-+ Note 2_1_1
+                |-+ Note 2_1_2
+                |-+ Note 2_1_3
+            |-+ Phrase 2_2
+                |-+ Note 2_2_1
+                |-+ Note 2_2_2
+                |-+ Note 2_2_3
+
+
+
+
+
 ######################
 ## chaine de markov ##
 ######################

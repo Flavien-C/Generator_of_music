@@ -31,6 +31,11 @@ public class State {
         return this.music.toString();
     }
     
+    public Set<Note> allNotes() {
+        Part[] allParts = this.music.getPartArray();
+        // [Part1, Part2, .., PartN
+    }
+    
     /*
     Permet de sauvegarder sur le DD l'etat actuel
     */
