@@ -10,6 +10,7 @@ public class State implements Constant {
     
     private Score music;
     
+    
     public State(Score music) {
         this.music = music;
     }
@@ -26,27 +27,28 @@ public class State implements Constant {
         return this.music.toString();
     }
     
+    /**
+    permet de generer de maniere aleatoire le debut d'une musique
+    */
     public Score initialization() {
-        //tmp
-        Phrase phrase1 = new Phrase();
-        phrase1.add(new Note(1, 1));//1
-        phrase1.add(new Note(2, 1));//2
-        
-        Part part1 = new Part(phrase1);
-        part1.setInstrument(0);
-        
-        Phrase phrase2 = new Phrase();
-        phrase2.add(new Note(11, 1));//1
-        phrase2.add(new Note(12, 1));//2
-        Part part2 = new Part(phrase2);
-        part2.setInstrument(10);
-        
-        Score score = new Score(part1);
-        score.addPart(part2);
-        
-        return score;
+        Score init = new Score();
+        for (int nbInst=0; nbInst<NUMBER_INSTRUMENT; nbInst++) {
+            Part inst = new Part((int)(Math.random()*127));
+            Phrase phr = new Phrase();
+            for (int i=0; i<FIRST_NOTES; i++) {
+                Note note = new Note((int)(Math.random()*127),
+                                     Math.random()*4);
+                phr.addNote(note);
+            }
+            inst.addPhrase(phr);
+            init.addPart(inst);
+        }
+        return init;
     }
     
+    /**
+    genere les notes suivantes d'une musique en fonction d'une chaine de markov
+    */
     public Score generateNextNotes() {
         Score score = new Score();
         for (Part part: this.music.getPartArray()) {
@@ -64,6 +66,9 @@ public class State implements Constant {
         return score;
     }
     
+    /**
+    concatene la musique courante avec les notes generees par la chaine de markov
+    */
     public State concatenate(Score nextNotes) {
         Score next = new Score(this.music.getPartArray());
         for (int i=0; i<next.getPartArray().length; i++) {
@@ -74,6 +79,9 @@ public class State implements Constant {
         return new State(next);
     }
     
+    /**
+    permet de sauvegarder sur le disque dur la musique actuelle
+    */
     public void save(String name) {
         Write.midi(this.music, name+".mid");
     }
