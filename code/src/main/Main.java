@@ -4,23 +4,17 @@ import model.*;
 
 import jm.JMC;
 import jm.music.data.*;
-import jm.util.*;
 
-public class Main {
+public class Main implements JMC {
     
     public static void main(String[] args) {
-        Phrase phrase = new Phrase();
-        for (int i=0; i<10; i++) {
-            Note n = new Note();
-            phrase.add(n);
-        }
-        Part part = new Part(phrase);
-        Score score = new Score(part);
+        State state = new State();
         
-        State state = new State(score);
-        
-        System.out.println(state.getNotesOf(0));
         //state.save("test");
+        
+        //System.out.println(state);
+        Score next = state.generateNextNotes();
+        System.out.println(state.concatenate(next));
         
     }
 }

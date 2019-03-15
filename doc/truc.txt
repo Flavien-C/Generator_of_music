@@ -5,8 +5,8 @@
 Notes
     - pitch : hauteur de la note. [0..127]
     - rhythmValue : longueur de la note. > 0
-    - dynamic: la sonie (volume/bruit parasite de la note ?). [0..127]
-    - pan: canal de sortie stereo. [0..1]
+    - dynamic: la sonie (volume/bruit parasite de la note ?). [0..127] // optionnel
+    - pan: canal de sortie stereo. [0..1] // optionnel
     
 
 Phrase
@@ -29,7 +29,7 @@ Sauvegarder sur le DD la creation
 
 Etat
     |-+ Score
-        |-+ Part 1
+        |-+ Part 1 (instrument)
             |-+ Phrase 1_1
                 |-+ Note 1_1_1
                 |-+ Note 1_1_2
@@ -38,7 +38,7 @@ Etat
                 |-+ Note 1_2_1
                 |-+ Note 1_2_2
                 |-+ Note 1_2_3
-        |-+ Part 2
+        |-+ Part 2 (instrument)
             |-+ Phrase 2_1
                 |-+ Note 2_1_1
                 |-+ Note 2_1_2
