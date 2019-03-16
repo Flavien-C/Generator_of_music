@@ -47,8 +47,8 @@ public class State implements Constant {
             Part inst = new Part((int)(Math.random()*127));
             Phrase phr = new Phrase();
             for (int i=0; i<FIRST_NOTES; i++) {
-                Note note = new Note((int)(Math.random()*127),
-                                     (Math.random()*4));
+                Note note = new Note((int)((Math.random() * (100-20)) +20),
+                                     (int)(Math.random()*3 + 1));
                 phr.addNote(note);
             }
             inst.addPhrase(phr);
