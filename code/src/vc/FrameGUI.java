@@ -12,7 +12,7 @@ import jm.music.data.*;
 import jm.util.*;
 
 public class FrameGUI extends JFrame implements ActionListener, JMC{
-    
+
     private State stateLead;
     private State state1;
     private State state2;
@@ -46,31 +46,21 @@ public class FrameGUI extends JFrame implements ActionListener, JMC{
     private JSlider slide4;
     //bouton lecteur Lead
     private JButton playLead;
-    private JButton pauseLead;
-    private JButton stopLead;
     private JButton saveLead;
     //bouton lecteur 1
     private JButton play1;
-    private JButton pause1;
-    private JButton stop1;
     private JButton add1;
     //bouton lecteur 2
     private JButton play2;
-    private JButton pause2;
-    private JButton stop2;
     private JButton add2;
     //bouton lecteur 3
     private JButton play3;
-    private JButton pause3;
-    private JButton stop3;
     private JButton add3;
     //bouton lecteur 4
     private JButton play4;
-    private JButton pause4;
-    private JButton stop4;
     private JButton add4;
-    
-    
+
+
     public FrameGUI() throws URISyntaxException {
         super("Generateur de Musique");//nom de la Frame
         this.stateLead = new State(new Score());//State principal
@@ -110,60 +100,35 @@ public class FrameGUI extends JFrame implements ActionListener, JMC{
         slide3 = new JSlider(0, 100, 0);
         slide4 = new JSlider(0, 100, 0);
         playLead = new JButton("PLAY");
-        pauseLead = new JButton("PAUSE");
-        stopLead = new JButton("STOP");
         saveLead = new JButton("SAUVEGARDER");
         play1 = new JButton("PLAY");
-        pause1 = new JButton("PAUSE");
-        stop1 = new JButton("STOP");
         add1 = new JButton("AJOUTER A LA PISTE");
         play2 = new JButton("PLAY");
-        pause2 = new JButton("PAUSE");
-        stop2 = new JButton("STOP");
         add2 = new JButton("AJOUTER A LA PISTE");
         play3 = new JButton("PLAY");
-        pause3 = new JButton("PAUSE");
-        stop3 = new JButton("STOP");
         add3 = new JButton("AJOUTER A LA PISTE");
         play4 = new JButton("PLAY");
-        pause4 = new JButton("PAUSE");
-        stop4 = new JButton("STOP");
         add4 = new JButton("AJOUTER A LA PISTE");
-        
+
         playLead.addActionListener(this);
-        pauseLead.addActionListener(this);
-        stopLead.addActionListener(this);
         saveLead.addActionListener(this);
         play1.addActionListener(this);
-        pause1.addActionListener(this);
-        stop1.addActionListener(this);
         add1.addActionListener(this);
         play2.addActionListener(this);
-        pause2.addActionListener(this);
-        stop2.addActionListener(this);
         add2.addActionListener(this);
         play3.addActionListener(this);
-        pause3.addActionListener(this);
-        stop3.addActionListener(this);
         add3.addActionListener(this);
         play4.addActionListener(this);
-        pause4.addActionListener(this);
-        stop4.addActionListener(this);
         add4.addActionListener(this);
         //_____________________________________________________________
-        lecLead.setBackground(Color.BLUE);
         lecLead.setLayout(new FlowLayout());
         lecLead.setPreferredSize(new Dimension(900, 200));
-        lec1.setBackground(Color.GREEN);
         lec1.setLayout(new FlowLayout());
         lec1.setPreferredSize(new Dimension(450, 100));
-        lec2.setBackground(Color.ORANGE);
         lec2.setLayout(new FlowLayout());
         lec2.setPreferredSize(new Dimension(450, 100));
-        lec3.setBackground(Color.RED);
         lec3.setLayout(new FlowLayout());
         lec3.setPreferredSize(new Dimension(450, 100));
-        lec4.setBackground(Color.BLACK);
         lec4.setLayout(new FlowLayout());
         lec4.setPreferredSize(new Dimension(450, 100));
         //_______________________ add objet ans les lecteurs
@@ -183,24 +148,14 @@ public class FrameGUI extends JFrame implements ActionListener, JMC{
         lec3.add(slide3);
         lec4.add(slide4);
         lecLead.add(playLead);
-        lecLead.add(pauseLead);
-        lecLead.add(stopLead);
         lecLead.add(saveLead);
         lec1.add(play1);
-        lec1.add(pause1);
-        lec1.add(stop1);
         lec1.add(add1);
         lec2.add(play2);
-        lec2.add(pause2);
-        lec2.add(stop2);
         lec2.add(add2);
         lec3.add(play3);
-        lec3.add(pause3);
-        lec3.add(stop3);
         lec3.add(add3);
         lec4.add(play4);
-        lec4.add(pause4);
-        lec4.add(stop4);
         lec4.add(add4);
         panelPrincipal.setLayout(new FlowLayout());
         panelPrincipal.add(lecLead);
@@ -280,12 +235,6 @@ public class FrameGUI extends JFrame implements ActionListener, JMC{
             Play.midi(state4.getMusic());
             actionSlider4((int) state4.getMusic().getEndTime());
             occupied = true;
-        }
-        else if (str.equals("PAUSE")) {
-            Play.pauseAudio();
-        }
-        else if (str.equals("STOP")) {
-            Play.stopAudio();
         }
     }
 
