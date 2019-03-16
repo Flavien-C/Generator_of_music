@@ -6,6 +6,10 @@ import jm.music.data.*;
 import jm.music.tools.*;
 import jm.util.*;
 
+/**
+
+*/
+
 public class State implements Constant {
     
     private Score music;
@@ -23,12 +27,19 @@ public class State implements Constant {
         return this.music;
     }
     
+    public void setMusic(Score music) {
+        this.music = music;
+    }
+    
     public String toString() {
         return this.music.toString();
     }
     
     /**
     permet de generer de maniere aleatoire le debut d'une musique
+    */
+    /**
+    Genere aleatoirement le 
     */
     public Score initialization() {
         Score init = new Score();
@@ -37,7 +48,7 @@ public class State implements Constant {
             Phrase phr = new Phrase();
             for (int i=0; i<FIRST_NOTES; i++) {
                 Note note = new Note((int)(Math.random()*127),
-                                     Math.random()*4);
+                                     (Math.random()*4));
                 phr.addNote(note);
             }
             inst.addPhrase(phr);
@@ -70,6 +81,9 @@ public class State implements Constant {
     concatene la musique courante avec les notes generees par la chaine de markov
     */
     public State concatenate(Score nextNotes) {
+        if (this.music.getPartArray().length == 0) {
+            return new State(nextNotes);
+        }
         Score next = new Score(this.music.getPartArray());
         for (int i=0; i<next.getPartArray().length; i++) {
             for (int j=0; j<next.getPartArray()[i].getPhraseArray().length; j++) {
